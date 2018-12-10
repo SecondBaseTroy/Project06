@@ -49,12 +49,16 @@ Log into Amazon Lightsail
 Secure your server with by updating all currently installed packages.
 - sudo apt-get update
 - sudo apt-get upgrade
+Verify last package(s) are installed
 
 Change the SSH port from 22 to 2200. Make sure to configure the Lightsail firewall to allow it.
 - sudo nano /etc/ssh/sshd_config
 -- change port form 22 to 2200
+-- deny port 22
+-- verify if PermitRootLogin is configured to 'no'
 
  Configure the Uncomplicated Firewall (UFW) to only allow incoming connections for SSH (port 2200), HTTP (port 80), and NTP (port 123).
+-  sudo ufw deny 22/tcp
 -  sudo ufw allow 2200/tcp
 -  sudo ufw allow 80/tcp
 -  sudo ufw allow 123/tcp
